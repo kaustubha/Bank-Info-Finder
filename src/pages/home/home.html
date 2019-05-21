@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Bank Search
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<div class="filter">
+  <ion-list class="bank-drop-down">
+    <ion-item>
+      <ion-select [(ngModel)]="branches" (ionChange)="selectedBranch()">
+        <ion-option value="BANGALORE">BANGALORE</ion-option>
+        <ion-option value="MUMBAI">MUMBAI</ion-option>
+        <ion-option value="CHENNAI">CHENNAI</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+</div>
+<ion-content padding class="extra-top-space">
+
+  <ion-card *ngFor="let bankinfo of bankinginfo">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>Bank name</ion-col>
+        <ion-col col-8 class="info">{{bankinfo.bank_name}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>Branch</ion-col>
+        <ion-col col-8 class="info">{{bankinfo.branch}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>IFSC</ion-col>
+        <ion-col col-8 class="info">{{bankinfo.ifsc}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item }}
+    </ion-item>
+  </ion-list> -->
+
+</ion-content>
